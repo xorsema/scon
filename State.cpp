@@ -126,7 +126,9 @@ void GameState::doInput( sf::RenderWindow& w )
 			int x = (int)floor(np.x);
 			int y = (int)floor(np.y);
 
-			if( mCG.isValidPos( x, y ) )
+			if( abs( np.x ) - abs( x ) < mCellSize / ( mCellSize + mCellSpace ) &&
+				abs( np.y ) - abs( y ) < mCellSize / ( mCellSize + mCellSpace ) && 
+				mCG.isValidPos( x, y ) )
 				mCG.setCellState( x, y, !mCG.isCellAlive( x, y ) );
 		}
 	}
